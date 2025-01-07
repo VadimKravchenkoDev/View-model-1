@@ -13,7 +13,8 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity {
-
+    TextView textView;
+    TimerViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +26,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        textView = findViewById(R.id.textView);
+        viewModel = new ViewModelProvider(this).get(TimerViewModel.class);
+         viewModel.getLiveData().observe(this, newText-> {
+             textView.setText(newText);
+         });
+         viewModel.startTimer();
     }
 }
