@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         textView = findViewById(R.id.textView);
-        viewModel = new ViewModelProvider(this).get(TimerViewModel.class);
+        TimerViewFactory timerViewFactory = new TimerViewFactory(getApplicationContext());
+        viewModel = new ViewModelProvider(this,timerViewFactory).get(TimerViewModel.class);
          viewModel.getLiveData().observe(this, newText-> {
              textView.setText(newText);
          });

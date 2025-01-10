@@ -16,7 +16,7 @@ public class TimerViewFactory implements ViewModelProvider.Factory {
 
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
-        return (T) new TimerViewModel();
+        return (T) new TimerViewModel(context);
     }
 }
 
